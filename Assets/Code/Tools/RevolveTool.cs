@@ -27,6 +27,7 @@ public class RevolveTool : Tool {
 				DetailEditor.instance.ActivateFeature(feature);
 			}
 		}
+		editor.SendSocket();
 	}
 
 	protected override void OnDeactivate() {

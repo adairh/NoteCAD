@@ -248,6 +248,13 @@ public class Constraint : SketchObject {
 			renderer.DrawLine(p0, p1);
 			return;
 		}
+		
+		Vector3 world1Position = Camera.main.ScreenToWorldPoint(p0);
+		Debug.Log("p0 Position: " + world1Position);
+		
+		Vector3 world2Position = Camera.main.ScreenToWorldPoint(p1);
+		Debug.Log("p1 Position: " + world2Position);
+		
 		float len = length(p1 - p0);
 		Vector3 dir = normalize(p1 - p0);
 		Vector3 p = p0;
@@ -562,9 +569,9 @@ public class ValueConstraint : Constraint {
 			var newPos = GetBasis().inverse.MultiplyPoint(value);
 			if(position_ == newPos) return;
 			position_ = newPos;
-			if(!sketch.is3d) {
+			//if(!sketch.is3d) {
 				position_.z = 0;
-			}
+			//}
 			changed = true;
 			//behaviour.Update();
 		}

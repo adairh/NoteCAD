@@ -15,6 +15,7 @@ public class ParallelTool : Tool {
 			editor.PushUndo();
 			new Parallel(DetailEditor.instance.currentSketch.GetSketch(), l0, entity);
 			l0 = null;
+			editor.SendSocket();
 		} else {
 			l0 = entity;
 		}

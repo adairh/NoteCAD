@@ -38,6 +38,7 @@ public class DetailEditor : MonoBehaviour {
 	public Mesh selectedMesh;
 	public Solid solid;
 	public RuntimeInspector inspector;
+	public GameObject serverHandler;
 
 	bool meshDirty = true;
 
@@ -138,6 +139,13 @@ public class DetailEditor : MonoBehaviour {
 		undoRedo.Pop();
 	}
 
+	public void SendSocket() {
+		var data = WriteXml(); 
+		Debug.Log(data);
+		var sender = serverHandler.GetComponent<CADServer>();
+		sender.SendMessageToClient(data);
+	}
+	
 	private void Start() {
 		instance_ = this;
 		mesh = new Mesh();
@@ -275,7 +283,7 @@ public class DetailEditor : MonoBehaviour {
 				selectedMesh.Clear();
 			}*/
 		}
-
+		
 		canvas.ClearStyle("hovered");
 		canvas.ClearStyle("hoveredPoints");
 		if(hovered != null) {
@@ -422,12 +430,14 @@ public class DetailEditor : MonoBehaviour {
 			selection
 				.Select(s => detail.GetObjectById(s))
 				.OfType<SketchObject>()
-				.Where(o => !(o is Constraint) || (o as Constraint).objects.All(co => co is SketchObject && (co as SketchObject).sketch == sk)));
+				.Where(o => !(o is Constraint) || (o as Constraint).objects.All(co 
+					=> co is SketchObject && (co as SketchObject).sketch == sk)));
 
 		sk.Write(xml, o => 
 			objects.Contains(o) && 
 			(!(o is Entity) || !objects.Contains((o as Entity).parent)) &&
-			(!(o is Constraint) || (o as Constraint).objects.All(co => co is SketchObject && objects.Contains(co as SketchObject)))
+			(!(o is Constraint) || (o as Constraint).objects.All(co 
+				=> co is SketchObject && objects.Contains(co as SketchObject)))
 		);
 
 		xml.WriteEndElement();

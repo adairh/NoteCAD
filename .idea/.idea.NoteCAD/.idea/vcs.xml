@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Assets/Code/External/Csg" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Assets/Code/External/UnityRuntimeInspector" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Assets/Code/External/geometry3Sharp" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Assets/Code/External/gsGCode" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Assets/Code/External/gsSlicer" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Assets/Code/External/netDxf" vcs="Git" />
+  </component>
+</project>

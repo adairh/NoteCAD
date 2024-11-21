@@ -24,6 +24,7 @@ public class LengthTool : Tool {
 			//click = WorldPlanePos;
 			MoveTool.instance.EditConstraintValue(constraint, pushUndo:false);
 			constraint = null;
+			editor.SendSocket();
 		}
 	}
 

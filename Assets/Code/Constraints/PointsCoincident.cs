@@ -21,7 +21,7 @@ public class PointsCoincident : Constraint {
 			var pe1 = p1.GetPointAtInPlane(0, sketch.plane);
 			yield return pe0.x - pe1.x;
 			yield return pe0.y - pe1.y;
-			if(sketch.is3d) yield return pe0.z - pe1.z;
+			/*if(sketch.is3d)*/ yield return pe0.z - pe1.z;
 		}
 	}
 

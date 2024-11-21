@@ -53,7 +53,7 @@ public class PointOn : ValueConstraint {
 
 			yield return eq.x;
 			yield return eq.y;
-			if(sketch.is3d) yield return eq.z;
+			/*if(sketch.is3d)*/ yield return eq.z;
 		}
 	}
 
@@ -71,7 +71,7 @@ public class PointOn : ValueConstraint {
 
 	protected override Matrix4x4 OnGetBasis() {
 		var p0 = point.PointExpInPlane(sketch.plane).Eval();
-		if(!sketch.is3d) p0.z = 0;
+		/*if(!sketch.is3d)*/ p0.z = 0;
 		return getPlane().GetTransform() * Matrix4x4.Translate(p0);
 	}
 

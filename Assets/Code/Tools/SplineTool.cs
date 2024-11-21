@@ -38,6 +38,7 @@ public class SplineTool : Tool {
 		current = newEntity;
 		foreach(var p in current.p) p.isSelectable = false;
 		current.isSelectable = false;
+		editor.SendSocket();
 	}
 	protected override void OnMouseMove(Vector3 pos, ICADObject entity) {
 		if(current != null) {

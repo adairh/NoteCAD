@@ -38,10 +38,10 @@ public static class ConstraintExp {
 	}
 
 	public static Exp pointLineDistance(ExpVector p, ExpVector p0, ExpVector p1, bool is3d) {
-		if(is3d) {
+		/*if(is3d) {*/
 			var d = p0 - p1;
 			return ExpVector.Cross(d, p0 - p).Magnitude() / d.Magnitude();
-		}
+		//}
 		return ((p0.y - p1.y) * p.x + (p1.x - p0.x) * p.y + p0.x * p1.y - p1.x * p0.y) / Exp.Sqrt(Exp.Sqr(p1.x - p0.x) + Exp.Sqr(p1.y - p0.y));
 	}
 

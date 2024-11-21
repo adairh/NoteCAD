@@ -22,5 +22,6 @@ public class ImportSTLTool : Tool, IPointerDownHandler {
 		feature.operation = CombineOp.Assembly;
 		DetailEditor.instance.AddFeature(feature); 
 		DetailEditor.instance.ActivateFeature(feature);
+		editor.SendSocket();
 	}
 }

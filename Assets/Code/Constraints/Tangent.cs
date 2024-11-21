@@ -110,7 +110,7 @@ public class Tangent : Constraint {
 			dir1 = sketch.plane.DirToPlane(dir1);
 
 			if(addAngle) {
-				Exp angle = sketch.is3d ? ConstraintExp.angle3d(dir0, dir1) : ConstraintExp.angle2d(dir0, dir1);
+				Exp angle = /*sketch.is3d*/true ? ConstraintExp.angle3d(dir0, dir1) : ConstraintExp.angle2d(dir0, dir1);
 				switch(option) {
 					case Option.Codirected: yield return angle; break;
 					case Option.Antidirected: yield return Exp.Abs(angle) - Math.PI; break;
@@ -129,7 +129,7 @@ public class Tangent : Constraint {
 
 				yield return eq.x;
 				yield return eq.y;
-				if(sketch.is3d) yield return eq.z;
+				/*if(sketch.is3d)*/ yield return eq.z;
 			}
 		}
 	}

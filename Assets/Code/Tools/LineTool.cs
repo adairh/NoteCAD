@@ -37,6 +37,7 @@ public class LineTool : Tool {
 		current.isSelectable = false;
 		current.p0.isSelectable = false;
 		current.p1.isSelectable = false;
+		editor.SendSocket();
 	}
 
 	protected override void OnMouseMove(Vector3 pos, ICADObject entity) {

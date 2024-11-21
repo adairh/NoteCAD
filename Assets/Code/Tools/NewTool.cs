@@ -8,5 +8,6 @@ public class NewTool : Tool {
 	protected override void OnActivate() {
 		StopTool();
 		DetailEditor.instance.New();
+		editor.SendSocket();
 	}
 }

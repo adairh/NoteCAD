@@ -95,7 +95,7 @@ public class SketchFeature : SketchFeatureBase, IPlane {
 
 	public SketchFeature() {
 		sketch.plane = this;
-		sketch.is3d = false;
+		sketch.is3d = true;
 		shouldHoverWhenInactive = false;
 		mainMesh = new Mesh();
 		loopObj = new GameObject("loops");

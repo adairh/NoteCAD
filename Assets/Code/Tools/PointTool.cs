@@ -11,6 +11,7 @@ public class PointTool : Tool {
 		if(entity is IEntity) {
 			AutoConstrainCoincident(p, entity as IEntity);
 		}
+		editor.SendSocket();
 	}
 
 }

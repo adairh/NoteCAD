@@ -10,10 +10,20 @@ public class PointEntity : Entity {
 	public Param y = new Param("y");
 	public Param z = new Param("z");
 
-	public bool is3d {
-		get {
-			return sketch.is3d;
-		}
+	// public bool is3d
+	// {
+	// 	get
+	// 	{
+	// 		return sketch.is3d;
+	// 	}
+	// }
+
+	public bool is3d
+	{
+	    get
+	    {
+	        return true;
+	    }
 	}
 
 	public PointEntity(Sketch sk) : base(sk) {
@@ -33,7 +43,7 @@ public class PointEntity : Entity {
 		if(transform != null) return;
 		x.value = pos.x;
 		y.value = pos.y;
-		if(is3d) z.value = pos.z;
+		/*if(is3d)*/ z.value = pos.z;
 	}
 
 	public override IEnumerable<Vector3> segments {
@@ -68,7 +78,7 @@ public class PointEntity : Entity {
 		get {
 			yield return x;
 			yield return y;
-			if(is3d) yield return z;
+			/*if(is3d)*/ yield return z;
 		}
 	}
 
@@ -85,7 +95,7 @@ public class PointEntity : Entity {
 	protected override void OnDrag(Vector3 delta) {
 		x.value += delta.x;
 		y.value += delta.y;
-		if(is3d) z.value += delta.z;
+		/*if(is3d)*/ z.value += delta.z;
 	}
 
 	public bool IsCoincidentWithCurve(IEntity curve, ref PointOn pOn) {
@@ -140,13 +150,13 @@ public class PointEntity : Entity {
 	protected override void OnWrite(XmlTextWriter xml) {
 		xml.WriteAttributeString("x", x.value.ToStr());
 		xml.WriteAttributeString("y", y.value.ToStr());
-		if(is3d) xml.WriteAttributeString("z", z.value.ToStr());
+		/*if(is3d)*/ xml.WriteAttributeString("z", z.value.ToStr());
 	}
 
 	protected override void OnRead(XmlNode xml) {
 		x.value = xml.Attributes["x"].Value.ToDouble();
 		y.value = xml.Attributes["y"].Value.ToDouble();
-		if(is3d) z.value = xml.Attributes["z"].Value.ToDouble();
+		/*if(is3d)*/ z.value = xml.Attributes["z"].Value.ToDouble();
 	}
 
 	public static double IsSelected(Vector3 pos, Vector3 mouse, Camera camera, Matrix4x4 tf) {

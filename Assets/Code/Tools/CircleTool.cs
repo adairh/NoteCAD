@@ -25,6 +25,7 @@ public class CircleTool : Tool {
 
 		current.isSelectable = false;
 		current.c.isSelectable = false;
+		editor.SendSocket();
 	}
 
 	protected override void OnMouseMove(Vector3 pos, ICADObject entity) {

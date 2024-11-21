@@ -51,7 +51,7 @@ public class AngleConstraint : ValueConstraint {
 			ExpVector d0 = p[0] - p[1];
 			ExpVector d1 = p[3] - p[2];
 			bool angle360 = HasEntitiesOfType(IEntityType.Arc, 1);
-			Exp angle = sketch.is3d ? ConstraintExp.angle3d(d0, d1) : ConstraintExp.angle2d(d0, d1, angle360);
+			Exp angle = /*sketch.is3d */ true ? ConstraintExp.angle3d(d0, d1) : ConstraintExp.angle2d(d0, d1, angle360);
 			yield return angle - value;
 		}
 	}
@@ -113,11 +113,17 @@ public class AngleConstraint : ValueConstraint {
 		var value = GetValue();
 		var offset = labelPos;
 
+		Vector3 worldPosition = Camera.main.ScreenToWorldPoint(labelPos);
+		Debug.Log("World Position: " + worldPosition);
+		
+		
 		if(Math.Abs(value) > EPSILON) {
 			Vector3[] pts = GetPointsInPlane(null);
 					
+			
 			Vector3 dir0 = plane.projectVectorInto(pts[0]) - plane.projectVectorInto(pts[1]);
 			Vector3 dir1 = plane.projectVectorInto(pts[3]) - plane.projectVectorInto(pts[2]);
+			
 			
 			Vector3 rref = pos;
 			float size = (length(p - rref) - 15f * pix);

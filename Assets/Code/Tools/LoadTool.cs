@@ -18,5 +18,6 @@ public class LoadTool : Tool, IPointerDownHandler {
 	void DataLoaded(string data) {
 		editor.PushUndo();
 		DetailEditor.instance.ReadXml(data);
+		editor.SendSocket();
 	}
 }

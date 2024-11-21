@@ -94,6 +94,7 @@ public class MoveTool : Tool {
 				}
 			}
 		}
+		editor.SendSocket();
 	}
 
 	void ClearDrag() {

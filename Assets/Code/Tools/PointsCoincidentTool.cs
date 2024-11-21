@@ -17,10 +17,12 @@ public class PointsCoincidentTool : Tool {
 				if(!p0.IsSameAs(entity) && (pt0 == null || pt1 == null || !pt0.IsCoincidentWith(pt1))) {
 					editor.PushUndo();
 					new PointsCoincident(DetailEditor.instance.currentSketch.GetSketch(), p0, entity);
+					editor.SendSocket();
 				}
 			} else {
 				editor.PushUndo();
 				new PointOn(DetailEditor.instance.currentSketch.GetSketch(), p0, entity);
+				editor.SendSocket();
 			}
 			p0 = null;
 		} else if(entity.type == IEntityType.Point) {

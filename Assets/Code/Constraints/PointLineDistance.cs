@@ -28,7 +28,7 @@ public class PointLineDistance : ValueConstraint {
 
 	public override IEnumerable<Exp> equations {
 		get {
-			yield return ConstraintExp.pointLineDistance(pointExp, lineP0Exp, lineP1Exp, sketch.is3d) - value;
+			yield return ConstraintExp.pointLineDistance(pointExp, lineP0Exp, lineP1Exp, /*sketch.is3d*/true) - value;
 		}
 	}
 

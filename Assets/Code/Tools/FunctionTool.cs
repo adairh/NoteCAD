@@ -39,6 +39,7 @@ public class FunctionTool : Tool {
 		current.p0.isSelectable = false;
 		current.p1.isSelectable = false;
 		current.c.isSelectable = false;
+		editor.SendSocket();
 	}
 
 	protected override void OnMouseMove(Vector3 pos, ICADObject entity) {

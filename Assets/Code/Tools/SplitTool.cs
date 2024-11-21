@@ -16,5 +16,6 @@ public class SplitTool : Tool {
 			e.sketch.ReplaceEntityInConstraints(s0.end, s1.end);
 			new PointsCoincident(e.sketch, s0.end, s1.begin);
 		}
+		editor.SendSocket();
 	}
 }

@@ -22,5 +22,6 @@ public class SliceTool : Tool {
 		feature.source = DetailEditor.instance.activeFeature;
 		DetailEditor.instance.AddFeature(feature); 
 		DetailEditor.instance.ActivateFeature(feature);
+		editor.SendSocket();
 	}
 }

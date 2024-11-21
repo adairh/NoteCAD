@@ -31,7 +31,7 @@ public class Perpendicular : Constraint {
 			ExpVector d0 = l0.GetPointAtInPlane(0, sketch.plane) - l0.GetPointAtInPlane(1, sketch.plane);
 			ExpVector d1 = l1.GetPointAtInPlane(0, sketch.plane) - l1.GetPointAtInPlane(1, sketch.plane);
 
-			Exp angle = sketch.is3d ? ConstraintExp.angle3d(d0, d1) : ConstraintExp.angle2d(d0, d1);
+			Exp angle = /*sketch.is3d */ true? ConstraintExp.angle3d(d0, d1) : ConstraintExp.angle2d(d0, d1);
 			switch(option) {
 				case Option.LeftHand: yield return angle - Math.PI / 2.0; break;
 				case Option.RightHand: yield return angle + Math.PI / 2.0; break;

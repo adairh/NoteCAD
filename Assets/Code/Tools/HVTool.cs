@@ -18,6 +18,7 @@ public class HVTool : Tool {
 			editor.PushUndo();
 			constraint = new HVConstraint(DetailEditor.instance.currentSketch.GetSketch(), entity);
 			constraint.orientation = vertical ? HVOrientation.OX : HVOrientation.OY;
+			editor.SendSocket();
 			return;
 		}
 
@@ -28,6 +29,7 @@ public class HVTool : Tool {
 			constraint.orientation = vertical ? HVOrientation.OX : HVOrientation.OY;
 			p0 = null;
 			constraint = null;
+			editor.SendSocket();
 		} else {
 			p0 = entity;
 		}

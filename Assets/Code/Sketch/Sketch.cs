@@ -157,7 +157,7 @@ public class Sketch : CADObject  {
 	}
 	public IPlane plane;
 
-	public bool is3d = false;
+	public bool is3d = true;
 
 	public IEnumerable<Entity> entityList {
 		get {

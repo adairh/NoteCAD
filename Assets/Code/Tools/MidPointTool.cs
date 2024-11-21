@@ -15,6 +15,7 @@ public class MidPointTool : Tool {
 				var pOn = new PointOn(DetailEditor.instance.currentSketch.GetSketch(), p0, entity);
 				pOn.reference = false;
 				pOn.SetValue(0.5);
+				editor.SendSocket();
 			}
 			p0 = null;
 		} else if(entity.type == IEntityType.Point) {

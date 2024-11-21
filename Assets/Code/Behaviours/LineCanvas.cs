@@ -9,16 +9,22 @@ public class LineCanvas : DraftStroke {
 		Vector3 prev = Vector3.zero;
 		bool first = true;
 		int count = 0;
-		foreach(var ep in points) {
+		
+		Vector3 worldPosition = Camera.main.ScreenToWorldPoint(prev);
+		//Debug.Log("LineCanvas Position: " + worldPosition);
+		
+		foreach(var ep in points)
+		{
+			var epe = Camera.main.ScreenToWorldPoint(ep);
 			if(!first) {
-				DrawLine(prev, ep);
+				DrawLine(worldPosition, epe);
 			}
 			first = false;
-			prev = ep;
+			prev = epe;
 			count++;
 		}
 		if(count == 1) {
-			DrawPoint(prev);
+			DrawPoint(Camera.main.ScreenToWorldPoint(prev));
 		}
 	}
 

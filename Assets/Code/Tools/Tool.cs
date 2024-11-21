@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Remoting;
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -70,12 +72,13 @@ public class Tool : MonoBehaviour {
 
 	public static Vector3 MousePos {
 		get {
-			var sk = DetailEditor.instance.currentWorkplane;
+			/*var sk = DetailEditor.instance.currentWorkplane;
 			var pos = WorldPlanePos;
 			if(sk != null) {
 				pos = sk.WorldToLocal(pos);
 			}
-			return pos;
+			return pos;*/
+			return WorldMousePos;
 		}
 	}
 
@@ -122,8 +125,12 @@ public class Tool : MonoBehaviour {
 		}
 	}
 
+	
 	public void StopTool() {
 		shouldStop = true;
+		//send socket
+		editor.SendSocket();
+
 	}
 
 	protected bool AutoConstrainCoincident(PointEntity point, IEntity with) {

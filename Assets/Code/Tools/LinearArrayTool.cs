@@ -11,6 +11,7 @@ public class LinearArrayTool : Tool {
 		feature.source = DetailEditor.instance.currentWorkplane;
 		DetailEditor.instance.AddFeature(feature); 
 		DetailEditor.instance.ActivateFeature(feature);
+		editor.SendSocket();
 	}
 
 }

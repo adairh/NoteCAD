@@ -38,6 +38,7 @@ public class AngleTool : Tool {
 			editor.PushUndo();
 			constraint = new AngleConstraint(DetailEditor.instance.currentSketch.GetSketch(), entity);
 			constraint.pos = WorldPlanePos;
+			editor.SendSocket();
 		}
 
 		if(entity.type != IEntityType.Line) return;
@@ -46,6 +47,7 @@ public class AngleTool : Tool {
 			constraint = CreateConstraint(l0, entity);
 			constraint.pos = WorldPlanePos;
 			l0 = null;
+			editor.SendSocket();
 		} else {
 			l0 = entity;
 		}

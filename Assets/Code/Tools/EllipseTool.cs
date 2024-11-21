@@ -41,6 +41,8 @@ public class EllipseTool : Tool {
 			var delta = current.center.pos - pos;
 			current.r0.value = Mathf.Abs(delta.x);
 			current.r1.value = Mathf.Abs(delta.y);
+			Debug.Log("DSADSAD" + pos);
+			current.rotation = Mathf.Abs(pos.z);
 			canCreate = true;
 			current.isError = !canCreate;
 		} else {

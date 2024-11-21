@@ -28,6 +28,7 @@ public class DistanceTool : Tool {
 		MoveTool.instance.EditConstraintValue(constraint, pushUndo:false);
 		constraint = null;
 		e0 = null;
+		editor.SendSocket();
 	}
 
 	protected override void OnMouseDown(Vector3 pos, ICADObject sko) {

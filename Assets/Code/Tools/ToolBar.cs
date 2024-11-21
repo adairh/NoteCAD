@@ -50,6 +50,7 @@ public class ToolBar : MonoBehaviour {
 	void Update() {
 		doubleClickTime += Time.deltaTime;
 		doubleClickFrame++;
+		
 		if(!IsInputFieldFocused()) {
 			foreach(var t in tools) {
 				bool activated = false;
@@ -73,14 +74,21 @@ public class ToolBar : MonoBehaviour {
 		}
 		bool overUI = IsPointerOverUIObject();
 		bool mouseDown = (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetMouseButtonDown(0)) && !overUI;
+
+		if (mouseDown)
+		{
+			Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			Debug.Log("Mouse down: " + worldPosition);
+		}
+		
 #if UNITY_WEBGL
 		//mouseDown = mouseDown || Input.touches.Length > 0 && Input.touches[0].phase == TouchPhase.Began;
 #endif
 		if(activeTool != null && mouseDown) {
 			if(doubleClickFrame == 1 || doubleClickTime < 0.3f) {
-				activeTool.MouseDoubleClick(Tool.MousePos, DetailEditor.instance.hovered);
+				activeTool.MouseDoubleClick(Tool.WorldMousePos, DetailEditor.instance.hovered);
 			}
-			activeTool.MouseDown(Tool.MousePos, DetailEditor.instance.hovered);
+			activeTool.MouseDown(Tool.WorldMousePos, DetailEditor.instance.hovered);
 			doubleClickTime = 0f;
 			doubleClickFrame = 0;
 		}
@@ -91,11 +99,11 @@ public class ToolBar : MonoBehaviour {
 #endif
 
 		if(activeTool != null && mouseUp) {
-			activeTool.MouseUp(Tool.MousePos, DetailEditor.instance.hovered);
+			activeTool.MouseUp(Tool.WorldMousePos, DetailEditor.instance.hovered);
 		}
 
 		if(activeTool != null) {
-			activeTool.MouseMove(Tool.MousePos, DetailEditor.instance.hovered);
+			activeTool.MouseMove(Tool.WorldMousePos, DetailEditor.instance.hovered);
 		}
 
 		if(activeTool != null) {

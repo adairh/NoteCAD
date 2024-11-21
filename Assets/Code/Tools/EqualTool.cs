@@ -18,6 +18,7 @@ public class EqualTool : Tool {
 				vc.reference = true;
 				new EqualValue(DetailEditor.instance.currentSketch.GetSketch(), c0, vc);
 				c0 = null;
+				editor.SendSocket();
 			}
 		}
 		if(c0 != null) return;
@@ -29,6 +30,7 @@ public class EqualTool : Tool {
 			editor.PushUndo();
 			new Equal(DetailEditor.instance.currentSketch.GetSketch(), l0, entity);
 			l0 = null;
+			editor.SendSocket();
 		} else {
 			l0 = entity;
 		}
